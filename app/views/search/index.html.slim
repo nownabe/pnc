@@ -1,0 +1,93 @@
+#search-form
+  = form_tag(search_path) do
+    p.control.has-addons
+      = text_field_tag(:query, nil, placeholder: "検索クエリ", class: "input is-large")
+      = submit_tag("検索", class: "button is-primary is-large")
+
+.columns.is-mobile
+  #description.column
+    p
+      | size:
+      = @positive + @negative + @neutral
+    svg#graph
+  #tweets.column.is-three-quarters
+    = render @tweets if @tweets
+
+javascript:
+  var size = {};
+  var data = [
+    {legend: "P", value: #{@positive}, color: "blue"},
+    {legend: "N", value: #{@negative}, color: "red"},
+    {legend: "-", value: #{@neutral}, color: "gray"}
+  ];
+  var win = d3.select(window);
+  var svg = d3.select("#graph");
+  console.log(svg);
+  var pie = d3.layout.pie().sort(null).value( function(d) { return d.value; } );
+  var arc = d3.svg.arc().innerRadius(0);
+  var isAnimated = false;
+
+  function render() {
+    var g = svg.selectAll(".arc")
+      .data(pie(data))
+      .enter()
+      .append("g")
+      .attr("class", "arc");
+
+    g.append("path")
+      .attr("stroke", "white")
+      .attr("fill", function(d) { return d.data.color; });
+
+    g.append("text")
+
+      .style("text-anchor", "middle")
+      .style("fill", "white")
+      .text( function(d) { return d.data.legend + "(" + d.data.value + ")"; } );
+  }
+
+  function update() {
+    size.width = parseInt(svg.style("width"));
+    arc.outerRadius(size.width / 2);
+    svg.attr("width", size.width).attr("height", size.width);
+
+    var g = svg.selectAll(".arc")
+      .attr("transform", "translate(" + (size.width / 2) + "," + (size.width / 2) + ")");
+
+    if (isAnimated) {
+      g.selectAll("path").attr("d", arc);
+    }
+
+    console.log(arc.centroid)
+
+    g.selectAll("text").attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; });
+  }
+
+  function animate() {
+    var g = svg.selectAll(".arc");
+    var length = data.length;
+    var i = 0;
+
+    g.selectAll("path")
+      .transition()
+      .ease("cubic-out")
+      .delay(500)
+      .duration(1000)
+      .attrTween("d", function(d) {
+        var interpolate = d3.interpolate(
+          {startAngle: 0, endAngle: 0},
+          {startAngle: d.startAngle, endAngle: d.endAngle}
+        );
+        return function(t) {
+          return arc(interpolate(t));
+        };
+      })
+    .each("end", function(transition, callback) {
+      i++;
+      isAnimated = i === length;
+    });
+  }
+
+  render();
+  update();
+  animate();
+  win.on("resize", update);

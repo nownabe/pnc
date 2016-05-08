@@ -1,0 +1,11 @@
+default: &default
+  dic_path: "/usr/local/lib/mecab/dic/mecab-ipadic-neologd"
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  <<: *default

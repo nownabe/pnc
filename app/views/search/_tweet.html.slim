@@ -1,0 +1,23 @@
+article.media
+  figure.media-left
+    p.image
+      a href=tweet.user_uri
+        img src=tweet.user_icon_uri
+  .media-content
+    - tweet_class = case tweet.polarity
+    - when :positive then "is-success"
+    - when :negative then "is-danger"
+    - when :neutral then ""
+    .message class=tweet_class
+      .message-body
+        = tweet.text
+    .words
+      - tweet.words.each do |word|
+        - word_class = case
+        - when word[:score].nil? then "is-warning"
+        - when word[:score].positive? then "is-success"
+        - when word[:score].negative? then "is-danger"
+        - else "is-dark"
+        span.tag class=word_class
+          = "#{word[:morpheme]}"
+          = ":#{word[:score]}" if word[:score]

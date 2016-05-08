@@ -1,0 +1,11 @@
+default: &default
+  dictionary_path: "config/pn_ja.dic"
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  <<: *default
