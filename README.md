@@ -1,24 +1,29 @@
-# README
+# Positive Negative Classifier for Twitter
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+PNC judges searched tweets are positive or negative.
 
-Things you may want to cover:
+## Secreen Shot
 
-* Ruby version
+# Usage
+## Twitter API
+PNC uses Twitter API, it requires:
 
-* System dependencies
+* Consumer key
+* Consumer secret
+* Access token
+* Access token secret
 
-* Configuration
+You can get those at [Twitter Developers](https://apps.twitter.com).
 
-* Database creation
+## Run
+PNC works with Docker.
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```bash
+docker run \
+  -p 3000:3000 \
+  -e TWITTER_CONSUMER_KEY="YOUR CONSUMER KEY" \
+  -e TWITTER_CONSUMER_SECRET="YOUR CONSUMER SECRET" \
+  -e TWITTER_ACCESS_TOKEN="YOUR ACCESS TOKEN" \
+  -e TWITTER_ACCESS_TOKEN_SECRET="YOUR ACCESS TOKEN SECRET" \
+  nownabe:pnc
+```

@@ -1,10 +1,12 @@
 source 'https://rubygems.org'
 
+gem "browserify-rails"
 gem "bulma-rails"
 gem "d3-rails"
 gem "dotenv-rails"
 gem "easy_settings"
 gem "natto"
+gem "react-rails"
 gem "slim-rails"
 gem "twitter"
 

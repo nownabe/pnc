@@ -40,6 +40,13 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.4.0)
     arel (7.0.0)
+    babel-source (5.8.35)
+    babel-transpiler (0.7.0)
+      babel-source (>= 4.0, < 6)
+      execjs (~> 2.0)
+    browserify-rails (3.1.0)
+      railties (>= 4.0.0, < 5.1)
+      sprockets (>= 3.5.2)
     buftok (0.2.0)
     builder (3.2.2)
     bulma-rails (0.0.24)
@@ -54,6 +61,7 @@ GEM
       execjs
     coffee-script-source (1.10.0)
     concurrent-ruby (1.0.1)
+    connection_pool (2.2.0)
     d3-rails (3.5.16)
       railties (>= 3.1)
     debug_inspector (0.0.2)
@@ -156,6 +164,13 @@ GEM
     rb-fsevent (0.9.7)
     rb-inotify (0.9.7)
       ffi (>= 0.5.0)
+    react-rails (1.7.1)
+      babel-transpiler (>= 0.7.0)
+      coffee-script-source (~> 1.8)
+      connection_pool
+      execjs
+      rails (>= 3.2)
+      tilt
     sass (3.4.22)
     sass-rails (5.0.4)
       railties (>= 4.0.0, < 5.0)
@@ -223,6 +238,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  browserify-rails
   bulma-rails
   byebug
   coffee-rails (~> 4.1.0)
@@ -236,6 +252,7 @@ DEPENDENCIES
   pry-rails
   puma (~> 3.0)
   rails (>= 5.0.0.beta4, < 5.1)
+  react-rails
   sass-rails (~> 5.0)
   slim-rails
   spring
