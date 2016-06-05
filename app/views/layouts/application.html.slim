@@ -8,3 +8,5 @@ html
   body
     #container
       = yield
+    = javascript_include_tag "index", "data-turbolinks-track": "reload"
+    = javascript_include_tag "cable", "data-turbolinks-track": "reload"

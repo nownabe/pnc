@@ -1,0 +1,38 @@
+{
+  "name": "pnc",
+  "version": "1.0.0",
+  "description": "PNC judges searched tweets are positive or negative.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/nownabe/pnc.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nownabe/pnc/issues"
+  },
+  "homepage": "https://github.com/nownabe/pnc#readme",
+  "devDependencies": {
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.5.0",
+    "babelify": "^7.3.0",
+    "browserify": "^13.0.1",
+    "browserify-incremental": "^3.1.1"
+  },
+  "dependencies": {
+    "es6-actioncable": "0.0.2",
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0",
+    "react-redux": "^4.4.5",
+    "redux": "^3.5.2",
+    "redux-logger": "^2.6.1",
+    "redux-thunk": "^2.1.0"
+  }
+}
