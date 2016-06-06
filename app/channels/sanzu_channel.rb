@@ -24,4 +24,11 @@ class SanzuChannel < ApplicationCable::Channel
     }
     ActionCable.server.broadcast "sanzu_channel", tweet: tweet
   end
+
+  def analyze(data)
+    tweets = Pnc::TwitterSearcher.search(data["query"])
+    Parallel.each(tweets, in_threads: 4) do |tweet|
+      ActionCable.server.broadcast "sanzu_channel", tweet: tweet.to_hash
+    end
+  end
 end

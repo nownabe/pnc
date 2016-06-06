@@ -1,4 +1,4 @@
-import { ADD_TWEET } from "../constants/ActionTypes"
+import { ADD_TWEET, QUERY } from "../constants/ActionTypes"
 
 const tweets = (tweets = [], action) => {
   switch (action.type) {
@@ -7,6 +7,8 @@ const tweets = (tweets = [], action) => {
         ...tweets,
         action.tweet
       ]
+    case QUERY:
+      return []
     default:
       return tweets
   }

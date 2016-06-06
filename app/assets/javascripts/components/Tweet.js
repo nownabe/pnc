@@ -2,12 +2,14 @@ import React from "react"
 import Word from "./Word"
 
 const Tweet = ({ polarity, user_uri, user_icon_uri, text, words}) => {
-  let tweet_class = "media-content"
+  let tweet_class = "message"
   switch (polarity) {
     case "positive":
       tweet_class = tweet_class + " is-success"
+      break
     case "negative":
       tweet_class = tweet_class + " is-danger"
+      break
   }
 
   let wordId = 0

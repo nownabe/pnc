@@ -3,7 +3,7 @@ import { QUERY, ADD_TWEET } from "../constants/ActionTypes"
 let nextTweetId = 0
 
 export const query = (query) => {
-  App.sanzu.speak(query)
+  App.sanzu.analyze(query)
   return {
     type: QUERY,
     query

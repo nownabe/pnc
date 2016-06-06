@@ -14,4 +14,7 @@ class SearchController < ApplicationController
     @neutral = @tweets.count(&:neutral?)
     render :index
   end
+
+  def action_cable
+  end
 end

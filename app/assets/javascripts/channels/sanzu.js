@@ -10,5 +10,8 @@ App.sanzu = App.cable.subscriptions.create("SanzuChannel", {
 	},
 	speak: function(message) {
 		this.perform("speak", { message })
-	}
+	},
+  analyze: function(query) {
+    this.perform("analyze", { query })
+  }
 })

@@ -40,6 +40,16 @@ class Tweet
     raw_tweet.text
   end
 
+  def to_hash
+    {
+      polarity: polarity,
+      user_uri: user_uri,
+      user_icon_uri: user_icon_uri,
+      text: text,
+      words: words_hashes
+    }
+  end
+
   def to_partial_path
     "search/tweet"
   end
@@ -64,5 +74,14 @@ class Tweet
 
   def enma
     @enma ||= Pnc::Enma.new(rinsed_text)
+  end
+
+  def words_hashes
+    words.map do |word|
+      {
+        morpheme: word[:morpheme].to_s,
+        score: word[:score]
+      }
+    end
   end
 end
