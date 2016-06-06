@@ -4,35 +4,6 @@ import rd3 from "react-d3"
 
 const PieChart = rd3.PieChart
 
-/*
-class Graph extends React.Component {
-  componentDidMount() {
-    // Render Graph
-
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    let { positive, negative, neutral } = this.props
-  }
-
-  getData() {
-    return [
-      {legend: "P", value: this.props.positive, color: "#f4faf0"},
-      {legend: "N", value: this.props.negative, color: "#fdeeed"},
-      {legend: "-", value: this.props.neutral, color: "#f5f7fa"}
-    ]
-  }
-
-  render() {
-    return (
-      <div className="column">
-        <svg id="graph" />
-      </div>
-    )
-  }
-}
-*/
-
 const mapStateToProps = (state, ownProps) => {
   let positive = 0
   let negative = 0
